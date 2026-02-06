@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Hospital Appointment App</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+</head>
+<body>
+
+  <header class="app-header">
+    <div class="logo">Rathnapura General Hospital</div>
+    <div class="menu" id="menuBtn">☰</div>
+  </header>
+
+  <!-- Mobile Sidebar Menu -->
+  <nav class="mobile-menu" id="mobileMenu">
+    <ul>
+      <li><a href="{{ url_for('home') }}">Home</a></li>
+      <li><a href="{{ url_for('home') }}">Book Appointment</a></li>
+      <li><a href="{{ url_for('my_appointments') }}">My Appointments</a></li>
+      <li><a href="{{ url_for('view_doctors') }}">View Doctor</a></li>
+    </ul>
+  </nav>
+
+  <!-- Page overlay -->
+  <div id="overlay" class="overlay"></div>
+
+  <!-- Hero Section -->
+  <section class="hero">
+    <img src="{{ url_for('static', filename='assets/coverphoto.jpg') }}" alt="Hospital">
+    <h1>Book Your Appointment Online</h1>
+    <p>Skip the queues and manage your appointments easily from your phone.</p>
+    <button id="bookNowBtn" class="btn">Book Appointment</button>
+  </section>
+
+  <!-- Quick Actions -->
+  <section class="quick-actions">
+    <div class="action-card" id="bookAppointment">
+      📅<span>Book Appointment</span>
+    </div>
+    <div class="action-card" id="myAppointments">
+      📝<span>My Appointments</span>
+    </div>
+    <div class="action-card" id="searchDoctor">
+      🔍<span>View Doctor</span>
+    </div>
+  </section>
+
+  <!-- Notices / Info -->
+  <section class="notices">
+    <h2>Notices</h2>
+      <div class="notice-card">🩺 New cardiologist, Dr. Sanjeewa Kumara, has joined our hospital.</div>
+      <div class="notice-card">🏥 Free diabetes screening camp on 12th February. Register early!</div>
+      <div class="notice-card">👶 Pediatric vaccination drive continues this month. Schedule your child’s appointment.</div>
+      <div class="notice-card">🧠 Neurology awareness seminar on 15th February. Open to all patients.</div>
+      <div class="notice-card">💊 New pharmacy hours: 8 AM to 6 PM daily.</div>
+      <div class="notice-card">💉 COVID-19 & Flu vaccines available. Book your slot online now!</div>
+
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    &copy; 2026 Rathnapura General Hospital, Sri Lanka
+    <p>0452 222 261</p>
+  </footer>
+
+  <!-- Booking Modal -->
+  <div id="modal" class="modal">
+    <div class="modal-content">
+      <span class="close">&times;</span>
+      <h2>Book Appointment</h2>
+      <form id="appointmentForm">
+        <label>Patient Name</label>
+        <input type="text" name="name" required>
+
+        <label>Department / Doctor</label>
+        <select name="department" required>
+            <option value="">-- Select Department --</option>
+            <option value="1">General Physician</option>
+            <option value="2">Cardiology</option>
+            <option value="3">Pediatrics</option>
+            <option value="4">Neurology</option>
+            <option value="5">Orthopedics</option>
+            <option value="6">Dermatology</option>
+            <option value="7">ENT</option>
+            <option value="8">Ophthalmology</option>
+            <option value="9">Gynecology</option>
+            <option value="10">Psychiatry</option>
+            <option value="11">Urology</option>
+            <option value="12">Gastroenterology</option>
+            <option value="13">Nephrology</option>
+            <option value="14">Pulmonology</option>
+            <option value="15">Rheumatology</option>
+            <option value="16">Oncology</option>
+            <option value="17">Endocrinology</option>
+            <option value="18">Hematology</option>
+            <option value="19">Pediatrics Surgery</option>
+            <option value="20">Cardiac Surgery</option>
+        </select>
+
+        <label>Date</label>
+        <input type="date" name="date" required>
+
+        <label>Time</label>
+        <input type="time" name="time" required>
+
+        <button type="submit">Confirm</button>
+      </form>
+    </div>
+  </div>
+
+  <div id="confirmationCard" class="confirmation-card" style="display:none;"></div>
+
+
+  <script src="{{ url_for('static', filename='js/script.js') }}"></script>
+</body>
+</html>

@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>My Appointments</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+  <header class="app-header">
+    <div class="logo">Rathnapura General Hospital</div>
+  </header>
+
+  <section class="hero">
+    <h1>My Appointments</h1>
+
+    <!-- Step 1: Ask Name -->
+    <form method="POST" style="margin-bottom:1rem;">
+        <label>Enter Your Name</label>
+        <input type="text" name="name" required value="{{ name }}">
+        <button type="submit">Show Appointments</button>
+    </form>
+
+    <!-- Step 2: Show Appointments -->
+    {% if appointments %}
+        {% for a in appointments %}
+            <div class="notice-card" style="margin-bottom:1rem;">
+                <strong>Patient:</strong> {{ a.patient_name }}<br>
+                <strong>Department:</strong> {{ a.department }}<br>
+                <strong>Date:</strong> {{ a.appointment_date }}<br>
+                <strong>Time:</strong> {{ a.appointment_time }}<br>
+                <strong>Reference No:</strong> {{ a.reference_no }}
+            </div>
+        {% endfor %}
+    {% elif name %}
+        <div class="notice-card" style="background-color:#f8d7da; color:#721c24;">
+            ❌ No upcoming appointments found for "{{ name }}".
+        </div>
+    {% endif %}
+  </section>
+</body>
+</html>

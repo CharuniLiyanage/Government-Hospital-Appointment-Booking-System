@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Our Doctors - Rathnapura General Hospital</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/view_doctors.css') }}">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+<body>
+    <!-- HEADER -->
+    <header class="app-header">
+        <div class="logo">Rathnapura General Hospital</div>
+    </header>
+
+    <main class="main-content">
+        <h1>Our Doctors by Department</h1>
+        <p class="intro-text">Meet our experienced doctors specialized in various departments.</p>
+
+        <div class="departments-container">
+            {% for dept, doctors in dept_dict.items() %}
+                <div class="department-card">
+                    <div class="dept-title">{{ dept }}</div>
+                    <ul class="doctor-list">
+                        {% for doctor in doctors %}
+                            <li>{{ doctor }}</li>
+                        {% endfor %}
+                    </ul>
+                </div>
+            {% endfor %}
+        </div>
+    </main>
+
+    <footer>
+        &copy; 2026 Rathnapura General Hospital
+    </footer>
+</body>
+</html>

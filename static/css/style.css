@@ -1,0 +1,354 @@
+/* --------------------
+   CSS VARIABLES (THEME)
+-------------------- */
+:root {
+  --primary-color: #2c3e50;      /* Header, menu, main text accents */
+  --secondary-color: #27ae60;    /* Buttons, highlights, CTAs */
+  --background-color: #ecf0f1;   /* Page background */
+  --text-color: #2c3e50;         /* General text */
+  --card-background: #ffffff;    /* Cards, modals */
+  --overlay-color: rgba(0,0,0,0.4); /* Menu / modal overlay */
+}
+
+
+/* --------------------
+   RESET & BODY
+-------------------- */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Roboto', sans-serif;
+}
+
+body {
+    background-color: var(--background-color);
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    color: var(--text-color);
+}
+
+/* --------------------
+   HEADER
+-------------------- */
+.app-header {
+    background-color: var(--primary-color);
+    color: var(--card-background);
+    padding: 1rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-weight: bold;
+    font-size: 1.2rem;
+}
+
+img {
+    max-width: 100%;
+    height: auto;
+}
+
+
+/* --------------------
+   MOBILE MENU
+-------------------- */
+
+#menuBtn {
+    cursor: pointer;
+    transition: 0.2s ease;
+}
+
+#menuBtn:hover {
+    color: var(--secondary-color);  
+    transform: scale(1.2);           
+}
+
+
+
+.mobile-menu {
+    position: fixed;
+    top: 0;
+    left: -250px;
+    width: 250px;
+    height: 100%;
+    background-color: var(--primary-color);
+    color: var(--card-background);
+    padding: 2rem 1rem;
+    transition: 0.3s;
+    z-index: 1001;
+}
+
+.mobile-menu.open {
+    left: 0;
+}
+
+.mobile-menu ul {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+}
+
+/* Make mobile menu text white */
+.mobile-menu ul li,
+/* Mobile menu text white and no underline */
+.mobile-menu ul li a {
+    color: #fff;               /* White text */
+    text-decoration: none;     /* Remove underline */
+}
+
+/* Keep hover effect */
+.mobile-menu ul li a:hover {
+    color: var(--secondary-color);  /* Accent on hover */
+}
+
+
+
+/* --------------------
+   OVERLAY
+-------------------- */
+.overlay {
+    display: none;
+    position: fixed;
+    top: 0; left: 0;
+    width: 100%; height: 100%;
+    background-color: var(--overlay-color);
+    z-index: 1000;
+}
+
+.overlay.active {
+    display: block;
+}
+
+/* --------------------
+   HERO SECTION
+-------------------- */
+.hero {
+    background-color: var(--card-background);
+    margin: 1rem;
+    border-radius: 12px;
+    padding: 1.5rem;
+    text-align: center;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+}
+
+.hero img {
+    max-width: 100%;
+    /* max-height: 220px; */
+    object-fit: cover;
+    border-radius: 12px;
+    margin-bottom: 1rem;
+    animation: fadeIn 0.6s ease-in;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+
+
+.hero h1 {
+    font-size: 1.5rem;
+    margin-bottom: 0.5rem;
+    color: var(--primary-color);
+}
+
+.hero p {
+    font-size: 1rem;
+    margin-bottom: 1rem;
+    color: var(--text-color);
+}
+
+/* Buttons */
+.btn {
+    padding: 0.8rem 1.5rem;
+    background-color: var(--secondary-color);
+    border: none;
+    border-radius: 8px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: 0.3s;
+    color: var(--card-background);
+}
+
+.btn:hover {
+    opacity: 0.85;
+}
+
+/* --------------------
+   QUICK ACTION CARDS
+-------------------- */
+.quick-actions {
+    display: flex;
+    justify-content: space-around;
+    margin: 1rem;
+}
+
+.action-card {
+    background-color: var(--card-background);
+    padding: 1rem;
+    border-radius: 12px;
+    width: 30%;
+    text-align: center;
+    box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.action-card:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 6px 15px rgba(0,0,0,0.15);
+}
+
+.action-card span {
+    display: block;
+    margin-top: 0.5rem;
+    font-weight: bold;
+}
+
+/* --------------------
+   NOTICES / INFO
+-------------------- */
+.notices {
+    margin: 1rem;
+}
+
+.notices h2 {
+    margin-bottom: 0.5rem;
+    color: var(--primary-color);
+    font-size: 1.2rem;
+}
+
+.notice-card {
+    background-color: var(--card-background);
+    padding: 0.8rem;
+    border-radius: 12px;
+    margin-bottom: 0.5rem;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    font-size: 0.95rem;
+}
+
+/* --------------------
+   FOOTER
+-------------------- */
+footer {
+    text-align: center;
+    padding: 1rem;
+    background-color: var(--primary-color);
+    color: var(--card-background);
+    margin-top: auto;
+    font-size: 0.9rem;
+}
+
+/* --------------------
+   MODAL
+-------------------- */
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 1002;
+    left: 0; top: 0;
+    width: 100%; height: 100%;
+    background-color: var(--overlay-color);
+    justify-content: center;
+    align-items: center;
+}
+
+.modal-content {
+    background-color: var(--card-background);
+    padding: 1.5rem;
+    border-radius: 12px;
+    width: 90%;
+    max-width: 400px;
+    position: relative;
+}
+
+.modal-content .close {
+    position: absolute;
+    top: 10px;
+    right: 15px;
+    font-size: 1.5rem;
+    cursor: pointer;
+}
+
+/* Form inside modal */
+.modal-content form {
+    display: flex;
+    flex-direction: column;
+    gap: 0.7rem;
+}
+
+.modal-content input, 
+.modal-content select {
+    padding: 0.6rem;
+    border-radius: 6px;
+    border: 1px solid #ccc;
+}
+
+.modal-content button {
+    padding: 0.7rem;
+    border: none;
+    background-color: var(--primary-color);
+    color: var(--card-background);
+    font-weight: bold;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.modal-content button:hover {
+    opacity: 0.85;
+}
+
+
+/* --------------------
+   CONFIRMATION CARD / MESSAGE BOX
+-------------------- */
+.confirmation-card {
+    position: fixed;       /* overlay on top of page */
+    top: 20px;
+    right: 20px;
+    background-color: #27ae60; /* green for success */
+    color: #fff;
+    padding: 1rem 1.5rem;
+    border-radius: 12px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+    font-weight: bold;
+    z-index: 2000;
+    max-width: 300px;
+    text-align: center;
+    animation: slideIn 0.5s ease, fadeOut 0.5s ease 3s forwards;
+}
+
+/* Error style */
+.confirmation-card.error {
+    background-color: #e74c3c; /* red for error */
+}
+
+/* Animation */
+@keyframes slideIn {
+    from { transform: translateX(100%); opacity: 0; }
+    to { transform: translateX(0); opacity: 1; }
+}
+
+@keyframes fadeOut {
+    to { opacity: 0; transform: translateX(100%); }
+}
+
+
+
+
+/* --------------------
+   RESPONSIVE ADJUSTMENTS
+-------------------- */
+@media (max-width: 400px) {
+    .quick-actions {
+        flex-direction: column;
+        gap: 0.8rem;
+        margin: 0.5rem;
+    }
+    .action-card {
+        width: 100%;
+    }
+}
