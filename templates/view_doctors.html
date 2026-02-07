@@ -2,36 +2,44 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Our Doctors - Rathnapura General Hospital</title>
-    <link rel="stylesheet" href="{{ url_for('static', filename='css/view_doctors.css') }}">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Medical Directory - RGH</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/view_doctors.css') }}">
 </head>
 <body>
-    <!-- HEADER -->
+
     <header class="app-header">
-        <div class="logo">Rathnapura General Hospital</div>
+        <h1>Rathnapura General Hospital</h1>
     </header>
 
-    <main class="main-content">
-        <h1>Our Doctors by Department</h1>
-        <p class="intro-text">Meet our experienced doctors specialized in various departments.</p>
-
-        <div class="departments-container">
-            {% for dept, doctors in dept_dict.items() %}
-                <div class="department-card">
-                    <div class="dept-title">{{ dept }}</div>
-                    <ul class="doctor-list">
-                        {% for doctor in doctors %}
-                            <li>{{ doctor }}</li>
-                        {% endfor %}
-                    </ul>
+    <div class="doctor-container">
+        <a href="{{ url_for('home') }}" class="back-btn" style="display:inline-block; margin-top:20px; text-decoration:none; color:#3498db;">← Back to Dashboard</a>
+        
+        <h2 class="main-title">Specialists Directory</h2>
+        
+        {% for group in staff %}
+            <div class="dept-section">
+                <h3 class="dept-title">Department of {{ group.dept_name }}</h3>
+                
+                <div class="doctor-grid">
+                    {% for doc in group.doctors %}
+                    <div class="doc-card">
+                        <div class="doc-header">👨‍⚕️</div>
+                        <div class="doc-info">
+                            <h3>{{ doc.name }}</h3>
+                            <div class="specialty">{{ doc.specialty }}</div>
+                        </div>
+                    </div>
+                    {% endfor %}
                 </div>
-            {% endfor %}
-        </div>
-    </main>
+            </div>
+        {% endfor %}
+    </div>
 
-    <footer>
+    <footer style="text-align:center; padding: 30px; color:#bdc3c7;">
         &copy; 2026 Rathnapura General Hospital
     </footer>
+
 </body>
 </html>

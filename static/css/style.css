@@ -338,17 +338,29 @@ footer {
 
 
 
+/* --- Media Queries for Specific Device Sizes --- */
 
-/* --------------------
-   RESPONSIVE ADJUSTMENTS
--------------------- */
-@media (max-width: 400px) {
-    .quick-actions {
-        flex-direction: column;
-        gap: 0.8rem;
-        margin: 0.5rem;
-    }
-    .action-card {
-        width: 100%;
-    }
-}
+        /* 1. Mobile Phones (up to 480px) */
+        @media (max-width: 480px) {
+            .app-header h1 { font-size: 1rem; }
+            .doctor-grid {
+                grid-template-columns: 1fr; /* Single column on phones */
+                gap: 15px;
+            }
+            .main-title { font-size: 1.2rem; }
+            .doc-card { padding: 15px; }
+        }
+
+        /* 2. Tablets (481px to 768px) */
+        @media (min-width: 481px) and (max-width: 768px) {
+            .doctor-grid {
+                grid-template-columns: repeat(2, 1fr); /* Two columns on tablets */
+            }
+        }
+
+        /* 3. Laptops/Desktops (769px and above) */
+        @media (min-width: 769px) {
+            .doctor-grid {
+                grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            }
+        }
